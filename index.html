@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SYNION</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+      background-color: #00a79a;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+    .hover-container:hover .right-panel {
+      opacity: 1;
+      pointer-events: auto;
+      background-color: #9bd7d3;
+    }
+    /* Initial zentriert */
+    .logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-height: 10rem;
+      cursor: pointer;
+      transition: left 0.7s ease, transform 0.7s ease;
+      z-index: 10;
+    }
+    /* Nach Hover: links 1/3 rechte Kante = 33.3333% von links,
+       Logo rechtsbündig an dieser Linie => left: 33.3333%, transform nach links */
+    .hover-container:hover .logo {
+      left: 33.3333%;
+      transform: translate(-100%, -50%);
+    }
+    .right-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 66.6667%;
+      height: 100%;
+      opacity: 0;
+      pointer-events: none;
+      padding-left: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      color: white;
+      transition: opacity 0.7s ease, background-color 0.7s ease;
+      box-sizing: border-box;
+    }
+    .right-panel img {
+      max-height: 8rem; /* 20% kleiner als 10rem */
+      margin-bottom: 0.25rem;
+    }
+    .right-panel p {
+      font-size: 1.2375rem; /* 10% größer als 1.125rem */
+      color: white;
+      line-height: 1.4;
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      /* Auf kleinen Bildschirmen Logo zentriert, rechte Seite ausgeblendet */
+      .logo {
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+      }
+      .right-panel {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hover-container relative w-full h-full">
+
+    <img src="logo.png" alt="Logo" class="logo" />
+
+    <div class="right-panel">
+      <img src="synion.png" alt="Synion" />
+      <p><b>Das Spezialistennetzwerk für Accounting, </br>Auditing, Sustainability and Taxation</b> </p>
+    </div>
+
+  </div>
+
+</body>
+</html>
